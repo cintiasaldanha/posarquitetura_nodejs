@@ -1,6 +1,5 @@
 
 var myFunctions = require("./funcoes.js");
-//var myFunctions = require ("math-asd-of13");
 
 const express = require('express');
 const app = express()
@@ -109,10 +108,10 @@ app.post('/dividir/:x/:y', (req, res) => {
     }
 });
 
-//var result = myFunctions.calcularAdicao(6,7);
-var result = myFunctions.calcularResultadoPorOperacao(6,7,"+");
+/*Para Teste básico
+const result = myFunctions.calcularResultadoPorOperacao(6,7,"+");
 console.log(result);
-
+*/
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)

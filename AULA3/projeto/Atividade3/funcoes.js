@@ -1,9 +1,10 @@
 
+
 /*Implementação das funções que retornam o resultado da operação matemática 
 entre  os 2 números recebidos como entrada e o tipo de o operação informado*/
-function calcularResultadoPorOperacao(n1, n2, operator) {
+const calcularResultadoPorOperacao = function(n1, n2, operador) {
     try{
-        switch (String(operator)) {
+        switch (String(operador)) {
             //Adição
             case "+":
             case " ":
@@ -34,7 +35,7 @@ function calcularResultadoPorOperacao(n1, n2, operator) {
         }
     };
     
-function calcularAdicao(x, y) {
+const calcularAdicao = function (x, y) {
    try{
         return parseFloat(x) + parseFloat(y);
     }
@@ -43,7 +44,7 @@ function calcularAdicao(x, y) {
     }
 };
 
-function calcularSubtracao(x, y) {
+const calcularSubtracao = function (x, y) {
     try{
         return parseFloat(x) - parseFloat(y);
     }
@@ -52,7 +53,7 @@ function calcularSubtracao(x, y) {
     }
 };
 
-function calcularMultiplicacao(x, y) {
+const calcularMultiplicacao = function (x, y) {
     try{
        return parseFloat(x) * parseFloat(y);
     }
@@ -61,7 +62,7 @@ function calcularMultiplicacao(x, y) {
     }
 };
 
-function calcularDivisao(x, y) {
+const calcularDivisao = function (x, y) {
     try{
         if (parseInt(y)==0) {
                 return ">>>ATENÇÃO: O valor do divisor não pode ser igual a zero!"
@@ -74,9 +75,9 @@ function calcularDivisao(x, y) {
 }
 
 module.exports = {
-    calcularResultadoPorOperacao: calcularResultadoPorOperacao,
-    calcularAdicao: calcularAdicao,
-    calcularSubtracao: calcularSubtracao,
-    calcularMultiplicacao: calcularMultiplicacao,
-    calcularDivisao: calcularDivisao
+    calcularResultadoPorOperacao,
+    calcularAdicao,
+    calcularSubtracao,
+    calcularMultiplicacao,
+    calcularDivisao
 };
