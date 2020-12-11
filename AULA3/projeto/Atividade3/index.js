@@ -1,62 +1,119 @@
-const express = require('express')
+
+var myFunctions = require("./funcoes.js");
+//var myFunctions = require ("math-asd-of13");
+
+const express = require('express');
 const app = express()
 const port = 3003
 
-//Middleware log
-app.use((req, res, next) =>{
-    console.log(req.url);
-    console.log(req.params);
-    console.log(req.query);
-    next();
-});
 
+//Get - utilizando parâmetros informados via querystring
+app.get('/calcularResultadoPorOperacao', (req, res) => {
+    try {
+        console.log(req.query.x, req.query.y, req.query.operador);
+            
+        var resultado = 
+        myFunctions.calcularResultadoPorOperacao(parseFloat(req.query.x),parseFloat(req.query.y),String(req.query.operador));
 
-//Exemplo - Padrão para utilização de rotas dinâmicas
-app.get('/posts/:id', (req, res) => {
-    console.log(req.params);
-    res.send("Este é o post de ID: " + req.params.id);
-});
-
-
-app.get('/', (req, res) => {
-  
-    //Exemplo - Utilização parâmetros via querystring
-    console.log("Parâmetro via querystring:", req.query.name);
-    res.status(200).send('Hello World!')
+        res.send("O resultado da operação é : " + resultado);
     
-    //Exemplo - Retorno Sucesso
-    //--Composição de retornos; padrão Builder
-    //res.status(200).json();   
-})
-
-app.post('/postsample', (req, res) => {
-    //Exemplo - sucesso
-    //res.status(200).send('Post response!')
-
-    //Exemplo - bug
-    res.status(500).send("Error");
-
-  })
-
-app.get("/sum", (request, response) =>{
-    const x = request.query.x || 0;
-    const y = request.query.y || 0;
-    const result = parseFloat(x) + parseFloat(y);
-
-    response.send("A soma é: " + result);
-
+    }
+    catch (ex) {
+        console.error( ex.message);
+        res.status(400).send(ex.message);
+    }
 });
 
-app.get("/sumurldinamica/:x/:y", (request, response) =>{
-    const x = request.params.x || 0;
-    const y = request.params.y || 0;
-    const result = parseFloat(x) + parseFloat(y);
+//Post - utilizando padrão para rotas dinâmicas
+app.post('/calcularResultadoPorOperacao/:x/:y/:operador', (req, res) => {
+    try {
+        console.log(req.params.y, req.params.x, req.params.operador);
+    
+        var resultado = 
+        myFunctions.calcularResultadoPorOperacao(parseFloat(req.params.x),parseFloat(req.params.y),String(req.params.operador));
 
-    response.send("A soma é: " + result);
-
+        res.send("O resultado da operação é : " + resultado);
+    
+    }
+    catch (ex) {
+        console.error( ex.message);
+        res.status(400).send(ex.message);
+    }
 });
+
+//Get - utilizando parâmetros informados via querystring
+app.get('/somar', (req, res) => {
+    try {
+        console.log(req.query.x, req.query.y);
+    
+        var resultado = 
+        myFunctions.calcularAdicao(parseFloat(req.query.x),parseFloat(req.query.y));
+
+        res.send("O resultado da Adição é : " + resultado);
+    
+    }
+    catch (ex) {
+        console.error( ex.message);
+        res.status(400).send(ex.message);
+    }
+});
+
+//Post - utilizando padrão para rotas dinâmicas
+app.post('/subtrair/:x/:y', (req, res) => {
+    try {
+        console.log(req.params);
+    
+        var resultado = 
+        myFunctions.calcularSubtracao(parseFloat(req.params.x),parseFloat(req.params.y));
+
+        res.send("O resultado da Subtração é : " + resultado);
+    
+    }
+    catch (ex) {
+        console.error( ex.message);
+        res.status(400).send(ex.message);
+    }
+});
+
+//Get - utilizando parâmetros informados via querystring
+app.get('/multiplicar', (req, res) => {
+    try {
+        console.log(req.query.x, req.query.y);
+    
+        var resultado = 
+        myFunctions.calcularMultiplicacao(parseFloat(req.query.x),parseFloat(req.query.y));
+
+        res.send("O resultado da Multiplicação é : " + resultado);
+    
+    }
+    catch (ex) {
+        console.error( ex.message);
+        res.status(400).send(ex.message);
+    }
+});
+
+//Post - utilizando padrão para rotas dinâmicas
+app.post('/dividir/:x/:y', (req, res) => {
+    try {
+        console.log(req.params);
+    
+        var resultado = 
+        myFunctions.calcularDivisao(parseFloat(req.params.x),parseFloat(req.params.y));
+
+        res.send("O resultado da Divisão é : " + resultado);
+    
+    }
+    catch (ex) {
+        console.error( ex.message);
+        res.status(400).send(ex.message);
+    }
+});
+
+//var result = myFunctions.calcularAdicao(6,7);
+var result = myFunctions.calcularResultadoPorOperacao(6,7,"+");
+console.log(result);
 
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+    console.log(`Example app listening at http://localhost:${port}`)
+  })
