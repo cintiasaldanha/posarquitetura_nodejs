@@ -1,5 +1,7 @@
 
-var myFunctions = require("./funcoes.js");
+//var myFunctions = require("./funcoes.js");
+
+var myFunctions = require("math-asd-of13");
 
 const express = require('express');
 const app = express()

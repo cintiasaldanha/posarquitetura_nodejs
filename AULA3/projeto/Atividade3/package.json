@@ -17,6 +17,6 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "math-asd-of13": "^1.0.3"
+    "math-asd-of13": "^1.0.9"
   }
 }
