@@ -20,7 +20,7 @@ module.exports = {
 };
 
 
-/*
+
 try {
 //a) 1 + 1
 var resultado =  myFunctions.calcularAdicao(1,1);
@@ -63,6 +63,6 @@ catch (ex) {
     console.error( ex.message);
 }
 
-*/
+
 
 
