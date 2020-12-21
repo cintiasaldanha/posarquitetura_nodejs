@@ -4,9 +4,13 @@ const WebSocket = require("ws");
 
 const app = express();
 
+app.use("/", express.static("./site"));
+
+/*
 app.get("/", function (req, res) {
   res.send("Hello World");
 });
+*/
 
 //Inicializa um servidor HTTP orquestrado pelo express
 const server = http.createServer(app);
@@ -20,7 +24,7 @@ wss.on("connection", (ws) => {
   ws.on("message", (message) => {
     console.log("Mensagem recebida: ", message);
     ws.send("Echo 1: " + message);
-    ws.send("Echo 2: " + message);
+    //ws.send("Echo 2: " + message);
   });
 });
 
